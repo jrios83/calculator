@@ -39,6 +39,11 @@ pipeline{
                 sh "docker build -t thinksec/calculator ."
             }
         }
+        stage("Docker tag") {
+            steps {
+                sh "docker tag thinksec/calculator thinksec/calculator:latest"
+            }
+        }
         stage("Docker push") {
             steps {
                 sh "docker push thinksec/calculator"
