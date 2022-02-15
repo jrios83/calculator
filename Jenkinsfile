@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent "agent-2"
     stages {
         stage("Checkout") {
             steps {
