@@ -39,5 +39,28 @@ pipeline{
                 sh "docker build -t calculator ."
             }
         }
+        stage("Docker push") {
+            steps {
+                sh "docker push thinksec/calculator"
+            }
+        }
+        stage("Deploy to staging") {
+            steps {
+                sh "docker run -d --rm -p 8765:8080 --name calculator thinksec/calculator"
+            }
+        }
+        stage("Acceptance test") {
+            steps {
+                sleep(60) {
+                    // on interrupt do
+                }
+                sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker stop calculator"
+        }
     }
 }
