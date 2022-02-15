@@ -41,7 +41,7 @@ pipeline{
         }
         stage("Docker push") {
             steps {
-                sh "docker push calculator"
+                sh "docker push thinksec/calculator"
             }
         }
         stage("Deploy to staging") {
