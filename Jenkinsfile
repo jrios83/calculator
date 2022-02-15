@@ -29,5 +29,15 @@ pipeline{
                 publishHTML (target: [reportDir: 'build/reports/checkstyle', reportFiles: 'main.html', reportName: 'Checkstyle Report'])
             }
         }
+        stage("Package") {
+            steps {
+                sh "./gradlew build"
+            }
+        }
+        stage("Docker build") {
+            steps {
+                sh "docker build -t thinksec/calculator ."
+            }
+        }
     }
 }
