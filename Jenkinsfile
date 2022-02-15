@@ -36,7 +36,7 @@ pipeline{
         }
         stage("Docker build") {
             steps {
-                sh "docker build -t thinksec/calculator ."
+                sh "docker build -t calculator ."
             }
         }
     }
