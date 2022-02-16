@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('thinksec-dockerhub')
+    }
     stages {
         stage("Checkout") {
             steps {
@@ -39,11 +42,11 @@ pipeline{
                 sh "docker build -t thinksec/calculator ."
             }
         }
-        //stage("Docker login") {
-        //    steps {
-        //        sh "docker login -u thinksec -p $PWD"
-        //    }
-        //}
+        stage("Docker login") {
+            steps {
+                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+            }
+        }
         stage("Docker push") {
             steps {
                 sh "docker push thinksec/calculator"
@@ -66,6 +69,7 @@ pipeline{
     post {
         always {
             sh "docker stop calculator"
+            sh "docker logout"
         }
     }
 }
