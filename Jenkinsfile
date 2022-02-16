@@ -41,7 +41,7 @@ pipeline{
         }
         stage("Docker login") {
             steps {
-                sh "docker login -u thinksec -p '?#U*7pi~CPMa34$'"
+                sh "docker login -u thinksec -p \'?#U*7pi~CPMa34$\'"
             }
         }
         stage("Docker push") {
