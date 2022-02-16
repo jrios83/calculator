@@ -1,5 +1,5 @@
 pipeline{
-    PWD=`?#U*7pi~CPMa34$`
+    PWD="?#U*7pi~CPMa34\$"
     agent any
     stages {
         stage("Checkout") {
