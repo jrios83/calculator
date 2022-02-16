@@ -1,5 +1,4 @@
 pipeline{
-    PWD="?#U*7pi~CPMa34\$"
     agent any
     stages {
         stage("Checkout") {
@@ -40,11 +39,11 @@ pipeline{
                 sh "docker build -t thinksec/calculator ."
             }
         }
-        stage("Docker login") {
-            steps {
-                sh "docker login -u thinksec -p $PWD"
-            }
-        }
+        //stage("Docker login") {
+        //    steps {
+        //        sh "docker login -u thinksec -p $PWD"
+        //    }
+        //}
         stage("Docker push") {
             steps {
                 sh "docker push thinksec/calculator"
