@@ -39,9 +39,9 @@ pipeline{
                 sh "docker build -t thinksec/calculator ."
             }
         }
-        stage("Docker tag") {
+        stage("Docker login") {
             steps {
-                sh "docker tag thinksec/calculator thinksec/calculator:latest"
+                sh "docker login -u thinksec -p '?#U*7pi~CPMa34$'"
             }
         }
         stage("Docker push") {
