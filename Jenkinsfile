@@ -54,7 +54,7 @@ pipeline{
         }
         stage("Deploy to staging") {
             steps {
-                sh "docker run -d --rm -p 8765:8080 --name calculator_test thinksec/calculator"
+                sh "docker run -ti --rm -p 8765:8080 --name calculator_test thinksec/calculator"
             }
         }
         stage("Acceptance test") {
