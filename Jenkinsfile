@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent 99-1
     environment {
         DOCKERHUB_CREDENTIALS = credentials('thinksec-dockerhub')
     }
@@ -61,7 +61,7 @@ pipeline{
         stage("Acceptance test") {
             steps {
                 sleep 60
-                sh "./gradlew acceptanceTest -Dcalculator.url=http://192.168.101.7:8765"
+                sh "./gradlew acceptanceTest -Dcalculator.url=http://192.168.2.99:8765"
                 //sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
