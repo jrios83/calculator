@@ -1,5 +1,5 @@
 pipeline{
-    agent {99-1}
+    agent {node '99-1'}
     environment {
         DOCKERHUB_CREDENTIALS = credentials('thinksec-dockerhub')
     }
